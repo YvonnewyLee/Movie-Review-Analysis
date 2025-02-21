@@ -24,36 +24,8 @@ Data preprocessing steps include:
 ### Part A: LSTM Model
 The model is based on LSTM, which is suitable for handling sequential data like text. The LSTM layers extract features from the text sequences, and a fully connected layer produces the final sentiment classification.
 
-```python
-class SentimentRNN(nn.Module):
-    def __init__(self, input_shape=(500, 1), num_classes=2, dim_hidden=20, dropout_rate=0, network_type="LSTM"):
-        super(SentimentRNN, self).__init__()
-        # LSTM layers
-        # Fully connected output layer
-```
-
 ### Part B: BERT Model
 In Part B, we use a pre-trained BERT model and fine-tune it on the movie review dataset. We use the BERT tokenizer to preprocess the text and input it into the model, which produces embeddings. The embeddings are then passed through a classification head.
-
-#### Using Pooled Output:
-```python
-class SentimentClassifierPooled(nn.Module):
-    def __init__(self, n_classes=2):
-        super(SentimentClassifierPooled, self).__init__()
-        self.bert = bert_model
-        self.drop = nn.Dropout(p=0.3)
-        self.out = nn.Linear(768, n_classes)
-```
-
-#### Using Last Hidden State:
-```python
-class SentimentClassifierLast(nn.Module):
-    def __init__(self, n_classes=2):
-        super(SentimentClassifierLast, self).__init__()
-        self.bert = bert_model
-        self.drop = nn.Dropout(p=0.3)
-        self.out = nn.Linear(768, n_classes)
-```
 
 ## Training
 
