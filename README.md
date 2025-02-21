@@ -91,19 +91,6 @@ We experimented with several hyperparameters to optimize the performance:
 3. **Epochs**: Experimented with different epoch counts to avoid overfitting.
 4. **Model Structure**: Tested both pooled output and last hidden state from BERT to compare results.
 
-## Usage
-
-To predict the sentiment of a new review using BERT:
-```python
-review = """Your review text here"""
-encoding = tokenizer.encode_plus(
-  review, max_length=400, add_special_tokens=True, return_attention_mask=True, return_tensors='pt'
-)
-output = best_model_bert(encoding['input_ids'], encoding['attention_mask'])
-prediction = output.max(1)[1]
-print("Predicted sentiment:", "positive" if prediction == 1 else "negative")
-```
-
 ## Results
 
 The following results were obtained for the models:
