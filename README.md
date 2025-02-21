@@ -1,7 +1,3 @@
-Here's the updated README file for your sentiment analysis project with the addition of the Transfer Learning section using BERT.
-
----
-
 # Movie Review Sentiment Analysis
 
 This project focuses on building a sentiment analysis model for classifying movie reviews as positive or negative. Initially, a recurrent neural network (RNN) using LSTM was used to process the IMDB Movie Review Dataset. In the second part, transfer learning is applied by fine-tuning a pre-trained BERT (Bidirectional Encoder Representations from Transformers) model to improve performance.
