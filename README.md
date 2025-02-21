@@ -42,12 +42,6 @@ BERT fine-tuning is performed using:
 - **Optimizer**: AdamW optimizer (recommended for BERT).
 - **Epochs**: Typically 5-10 epochs for fine-tuning.
 
-```python
-def train_bert(model, train_loader, valid_loader, num_epoch=5, learning_rate=1e-5):
-    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-    # Training loop with loss and accuracy tracking
-```
-
 ## Evaluation
 
 The model performance is evaluated using:
