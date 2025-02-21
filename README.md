@@ -91,5 +91,51 @@ We experimented with several hyperparameters to optimize the performance:
 3. **Epochs**: Experimented with different epoch counts to avoid overfitting.
 4. **Model Structure**: Tested both pooled output and last hidden state from BERT to compare results.
 
+## Usage
 
+To predict the sentiment of a new review using BERT:
+```python
+review = """Your review text here"""
+encoding = tokenizer.encode_plus(
+  review, max_length=400, add_special_tokens=True, return_attention_mask=True, return_tensors='pt'
+)
+output = best_model_bert(encoding['input_ids'], encoding['attention_mask'])
+prediction = output.max(1)[1]
+print("Predicted sentiment:", "positive" if prediction == 1 else "negative")
+```
+
+## Results
+
+The following results were obtained for the models:
+
+### Part A: LSTM Model
+- **Training Accuracy**: 74.39%
+- **Validation Accuracy**: 64.23%
+- **Test Accuracy**: 63.72%
+
+### Part B: BERT Model
+- **Training Accuracy**: 100.00%
+- **Validation Accuracy**: 91.10%
+- **Test Accuracy**: 90.81%
+
+BERT outperforms the LSTM model by a significant margin. It achieved a test accuracy that was 27.09% higher than the LSTM model. This is expected since BERT is a pre-trained model, leveraging large-scale text data to learn context-aware embeddings, while the LSTM model was trained from scratch on a smaller dataset.
+
+### False Positive and False Negative Rates
+
+- **False Positive Rate (FPR)**:  
+  - Part A (LSTM): 55.56%
+  - Part B (BERT): 9.72%
+
+- **False Negative Rate (FNR)**:  
+  - Part A (LSTM): 33.45%
+  - Part B (BERT): 10.50%
+
+The BERT model shows a lower false positive and false negative rate compared to the LSTM model, which further highlights its improved performance in sentiment classification.
+
+### Misclassified Reviews
+- **BERT Misclassifications**: Reviews with subtle or mixed sentiments are more prone to misclassification.
+- **LSTM Misclassifications**: The LSTM model had difficulty with sarcasm and mixed sentiments.
+
+### Conclusion
+The BERT model clearly outperforms the LSTM model in all aspects, showcasing the power of transfer learning and pre-trained models in natural language processing tasks.
 
